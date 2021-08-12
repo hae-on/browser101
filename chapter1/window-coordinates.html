@@ -23,9 +23,20 @@
       .special {
         background-color: tomato;
       }
+
+      aside {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
     </style>
   </head>
   <body>
+    <aside>
+      <button class="scroll__y">scroll y</button>
+      <button class="scroll__100px">scroll 100px</button>
+      <button class="scroll__special">scroll special</button>
+    </aside>
     <div></div>
     <div></div>
     <div></div>
@@ -43,6 +54,25 @@
         console.log(rect);
         console.log(`client: ${event.clientX}, ${event.clientY}`);
         console.log(`page: ${event.pageX}, ${event.pageY}`);
+        // client는 현재 보고 있는 페이지 기준
+        // page는 전체 페이지 기준
+
+        const scrollY = document.querySelector(".scroll__y");
+        const scroll100px = document.querySelector(".scroll__100px");
+        const scrollSpecial = document.querySelector(".scroll__special");
+        // 100px씩 이동
+        scrollY.addEventListener("click", () => {
+          window.scrollBy(0, 100);
+          // window.scrollBy({top:100, left:0, behavior:"smooth"})
+        });
+        // 위에서 100px 떨어진 곳으로 이동
+        scroll100px.addEventListener("click", () => {
+          window.scrollTo(0, 100);
+        });
+        // 특정 요소로 이동
+        scrollSpecial.addEventListener("click", () => {
+          special.scrollIntoView();
+        });
       });
     </script>
   </body>
