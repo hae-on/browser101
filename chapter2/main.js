@@ -35,7 +35,11 @@ addBtn.addEventListener("click", () => {
   onAdd();
 });
 
-input.addEventListener("keypress", (event) => {
+input.addEventListener("keydown", (event) => {
+  // 한글 입력 시 오류 방지 ex) 안녕, 녕
+  if (event.isComposing) {
+    return;
+  }
   if (event.key === "Enter") {
     onAdd();
   }
