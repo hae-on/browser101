@@ -1,6 +1,12 @@
 const items = document.querySelector(".items");
+const form = document.querySelector(".new-form");
 const input = document.querySelector(".footer__input");
 const addBtn = document.querySelector(".footer__button");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  onAdd();
+});
 
 function onAdd() {
   const text = input.value;
@@ -30,20 +36,6 @@ function createItem(text) {
   id++;
   return itemRow;
 }
-
-addBtn.addEventListener("click", () => {
-  onAdd();
-});
-
-input.addEventListener("keydown", (event) => {
-  // 한글 입력 시 오류 방지 ex) 안녕, 녕
-  if (event.isComposing) {
-    return;
-  }
-  if (event.key === "Enter") {
-    onAdd();
-  }
-});
 
 items.addEventListener("click", (event) => {
   const id = event.target.dataset.id;
