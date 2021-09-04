@@ -125,6 +125,7 @@ function showStopButton() {
   const icon = gameBtn.querySelector(".fas");
   icon.classList.add("fa-stop");
   icon.classList.remove("fa-play");
+  gameBtn.style.visibility = "visible";
 }
 
 function onFildeClick(event) {
